@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiển thị giờ và ngày hiện tại</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="time"></div>
+    <div id="date"></div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+
+            // Giờ: hh:mm:ss
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            // Ngày - Tháng - Năm: dd - mmm - yyyy
+            const day = String(now.getDate()).padStart(2, '0');
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+
+            document.getElementById("time").innerText =
+                `Giờ hiện tại: ${hours}:${minutes}:${seconds}`;
+
+            document.getElementById("date").innerText =
+                `Ngày - Tháng - Năm: ${day} - ${month} - ${year}`;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+
+</body>
+</html>
